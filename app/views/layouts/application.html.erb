@@ -7,10 +7,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="view" style="background-image: url('http://localhost:3000/background2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <div class="mask rgba-black-light align-items-center">
+        <div class="container">
+          <% if flash[:alert] %>
+            <br/>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= flash[:alert] %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+          <% if flash[:notice] %>
+            <br/>
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <%= flash[:notice] %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

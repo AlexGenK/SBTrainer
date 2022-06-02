@@ -1,1 +1,10 @@
-<h1>Championships</h1>
+<div class="card opacity-75">
+	<div class="card-header">
+		Championships
+	</div>
+	<div class="card-body">
+		<% @championships.each do |champ| %>
+			<p><%= champ.name %></p>
+		<% end %>
+	</div>
+</div>
