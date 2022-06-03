@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :championships
+  resources :championships do
+    resources :matches do
+      resources :bets
+    end
+  end
 
   root to: 'championships#index'
 end
