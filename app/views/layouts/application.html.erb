@@ -12,6 +12,23 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #f5f5ef;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <a class="navbar-brand" href="#">
+            <img src="logo.svg" alt="" width="70" >
+          </a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Championships', championships_path, class: 'nav-link' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="view" style="background-image: url('http://localhost:3000/background2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
       <div class="mask rgba-black-light align-items-center">
         <div class="container">
@@ -29,6 +46,10 @@
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% end %>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <%= yield %>
         </div>
       </div>
