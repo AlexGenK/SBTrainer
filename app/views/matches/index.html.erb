@@ -1,0 +1,36 @@
+<div class="card opacity-75">
+  <div class="card-header">
+    <div class="container-fluid">
+      <b>Matches. Championship - <%= @championship.name %></b>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matches.each do |mth| %>
+          <tr>
+            <td><%= mth.team1 %></td>
+            <td><%= mth.team2 %></td>
+            <td><%= mth.date %></td>
+            <td>
+              <% if mth.played? %>
+                <%= link_to 'Make a bet', '#', class: "btn btn-secondary disabled" %>
+              <% else %>
+                <%= link_to 'Make a bet', new_championship_match_bet_path(@championship, mth), 
+                      class: "btn btn-success" %>
+              <% end %>
+                      
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </div>
+</div>
