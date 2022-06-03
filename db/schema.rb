@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_195911) do
+ActiveRecord::Schema.define(version: 2022_06_03_083621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,31 @@ ActiveRecord::Schema.define(version: 2022_05_30_195911) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "championship_id", null: false
+    t.date "date"
+    t.string "team1"
+    t.string "team2"
+    t.integer "score1", default: 0
+    t.integer "score2", default: 0
+    t.integer "team1_svm"
+    t.integer "team2_svm"
+    t.integer "draw_svm"
+    t.integer "team1_prf"
+    t.integer "team2_prf"
+    t.integer "draw_prf"
+    t.integer "team1_knn"
+    t.integer "team2_knn"
+    t.integer "draw_knn"
+    t.decimal "team1_k", precision: 5, scale: 3
+    t.decimal "tea2_k", precision: 5, scale: 3
+    t.decimal "draw_k", precision: 5, scale: 3
+    t.boolean "played", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["championship_id"], name: "index_matches_on_championship_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,4 +86,5 @@ ActiveRecord::Schema.define(version: 2022_05_30_195911) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "matches", "championships"
 end
