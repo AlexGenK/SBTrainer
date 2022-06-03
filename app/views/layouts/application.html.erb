@@ -19,12 +19,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
           <a class="navbar-brand" href="#">
-            <img src="logo.svg" alt="" width="70" >
+            <img src="/logo.svg" alt="" width="70" >
           </a>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <%= link_to 'Championships', championships_path, class: 'nav-link' %>
             </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <span class="navbar-text">
+                User: <%= current_user.email %> | 
+              </span>
+              <li class="nav-item">
+                <%= link_to "Exit", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -32,6 +46,9 @@
     <div class="view" style="background-image: url('http://localhost:3000/background2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
       <div class="mask rgba-black-light align-items-center">
         <div class="container">
+          <br/>
+          <br/>
+          <br/>
           <% if flash[:alert] %>
             <br/>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -46,10 +63,6 @@
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% end %>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
           <%= yield %>
         </div>
       </div>
