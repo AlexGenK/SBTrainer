@@ -12,5 +12,60 @@
     </div>
   </div>
   <div class="card-body">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th rowspan='2'>Team</th>
+          <th rowspan='2'>Coefficient</th>
+          <th colspan='3'>Predictions</th>
+        </tr>
+        <tr>
+          <th>SVM</th>
+          <th>Random Forest</th>
+          <th>kNN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= @match.team1 %></th>
+          <th><%= @match.team1_k %></th>
+          <td><%= @match.team1_svm %>%</td>
+          <td><%= @match.team1_prf %>%</td>
+          <td><%= @match.team1_knn %>%</td>
+        </tr>
+        <tr>
+          <th>Draw</th>
+          <th><%= @match.draw_k %></th>
+          <td><%= @match.draw_svm %>%</td>
+          <td><%= @match.draw_prf %>%</td>
+          <td><%= @match.draw_knn %>%</td>
+        </tr>
+        <tr>
+          <th><%= @match.team2 %></th>
+          <th><%= @match.team2_k %></th>
+          <td><%= @match.team2_svm %>%</td>
+          <td><%= @match.team2_prf %>%</td>
+          <td><%= @match.team2_knn %>%</td>
+        </tr>
+      </tbody>
+    </table>
+    <%= form_for [@championship, @match, @bet], html: { class: 'row' } do |f| %>
+      <div class='col-md-6'>
+        <%= f.label :result, class: 'form-label' %>
+        <%= f.select :result, @res_list, {}, {class: 'form-select'} %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.label :sum, 'Money', class: 'form-label' %>
+        <%= f.number_field :sum, class: 'form-control' %>
+      </div>
+      <div class="col-12 mt-2">
+        <%= link_to championship_matches_path(@championship), class: "btn btn-danger" do %>
+          <i class="fas fa-ban"></i> Cancel
+        <% end %>
+        <%= f.button type: 'submit', class: "btn btn-success" do %>
+          <i class="fas fa-check"></i> Make a bet
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
