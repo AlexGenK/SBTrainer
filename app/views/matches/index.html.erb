@@ -1,7 +1,14 @@
 <div class="card opacity-75">
   <div class="card-header">
-    <div class="container-fluid">
-      <b>Matches. Championship - <%= @championship.name %></b>
+    <div class="d-flex justify-content-between">
+      <div>
+        <b>Matches. Championship - <%= @championship.name %></b>
+      </div>
+      <div>
+      <%= link_to :back, class: "ml-auto btn btn-success btn-sm" do %>
+        <i class="fas fa-undo"></i> Back       
+      <% end %>
+      </div>
     </div>
   </div>
   <div class="card-body">
@@ -26,8 +33,7 @@
               <% else %>
                 <%= link_to 'Make a bet', new_championship_match_bet_path(@championship, mth), 
                       class: "btn btn-success" %>
-              <% end %>
-                      
+              <% end %>      
             </td>
           </tr>
         <% end %>
