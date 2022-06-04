@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_174051) do
+ActiveRecord::Schema.define(version: 2022_06_04_060204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_174051) do
     t.integer "team2_knn"
     t.integer "draw_knn"
     t.decimal "team1_k", precision: 5, scale: 3
-    t.decimal "tea2_k", precision: 5, scale: 3
+    t.decimal "team2_k", precision: 5, scale: 3
     t.decimal "draw_k", precision: 5, scale: 3
     t.boolean "played", default: false
     t.datetime "created_at", precision: 6, null: false
