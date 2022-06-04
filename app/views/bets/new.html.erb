@@ -5,7 +5,7 @@
         <b>Make a bet. <%= @championship.name %>. <%= @match.team1 %> - <%= @match.team2 %></b>
       </div>
       <div>
-      <%= link_to :back, class: "ml-auto btn btn-success btn-sm" do %>
+      <%= link_to championship_matches_path(@championship), class: "ml-auto btn btn-success btn-sm" do %>
         <i class="fas fa-undo"></i> Back       
       <% end %>
       </div>
