@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  sum: 1
+  win: 1
+  spend: 1
+
+two:
+  user: two
+  sum: 1
+  win: 1
+  spend: 1
