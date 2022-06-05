@@ -18,7 +18,9 @@
           <th>Team 1</th>
           <th>Team 2</th>
           <th>Date</th>
-          <th></th>
+          <% if user_signed_in? %>
+            <th></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -27,14 +29,16 @@
             <td><%= mth.team1 %></td>
             <td><%= mth.team2 %></td>
             <td><%= mth.date %></td>
-            <td>
-              <% if mth.played? %>
-                <%= link_to 'Make a bet', '#', class: "btn btn-secondary disabled" %>
-              <% else %>
-                <%= link_to 'Make a bet', new_championship_match_bet_path(@championship, mth), 
-                      class: "btn btn-success" %>
-              <% end %>      
-            </td>
+            <% if user_signed_in? %>
+              <td>
+                <% if mth.played? %>
+                  <%= link_to 'Make a bet', '#', class: "btn btn-secondary disabled" %>
+                <% else %>
+                  <%= link_to 'Make a bet', new_championship_match_bet_path(@championship, mth), 
+                        class: "btn btn-success" %>
+                <% end %>      
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

@@ -4,7 +4,7 @@
 	</div>
 	<div class="card-body">
 		<% @championships.each do |champ| %>
-			<p><%= link_to champ.name, championship_matches_path(champ) %></p>
+			<p><b><%= link_to champ.name, championship_matches_path(champ) %></b></p>
 		<% end %>
 	</div>
 </div>

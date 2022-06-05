@@ -26,9 +26,11 @@
             <li class="nav-item">
               <%= link_to 'Championships', championships_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'Statistics', user_account_path(current_user), class: 'nav-link' %>
-            </li>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'Statistics', user_account_path(current_user), class: 'nav-link' %>
+              </li>
+            <% end %>
           </ul>
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
