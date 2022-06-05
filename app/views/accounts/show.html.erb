@@ -22,7 +22,7 @@
             <button type="submit" class="btn btn-success">Replenish</button>
           </div>
         <% end %>
-        <table class="table">
+        <table class="table text-center">
           <thead>
             <tr>
               <th>Current state</th>
@@ -44,6 +44,57 @@
         <b>Bets</b>
       </div>
       <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Championship</th>
+              <th>Team 1</th>
+              <th>Team 2</th>
+              <th>Event</th>
+              <th>Money</th>
+              <th>Coefficient</th>
+              <th>Score 1</th>
+              <th>Score 2</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bets.each do |bet| %>
+              <tr>
+                <td><%= bet.match.championship.name %></td>
+                <td><%= bet.match.team1 %></td>
+                <td><%= bet.match.team2 %></td>
+                <td>
+                  <% case bet.result %>
+                  <% when 0 %>
+                    Draw
+                  <% when 1 %>
+                    Team 1 win
+                  <% when 2 %>
+                    Team 2 win
+                  <% end %>
+                </td>
+                <td><%= bet.sum %></td>
+                <td><%= bet.k %></td>
+                <% if bet.match.played? %>
+                  <td><%= bet.match.score1 %></td>
+                  <td><%= bet.match.score2 %></td>
+                  <td>
+                    <% if bet.win? %>
+                      <span class="badge rounded-pill bg-success">Win</span>
+                    <% else %>
+                      <span class="badge rounded-pill bg-danger">Loss</span>
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

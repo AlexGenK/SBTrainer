@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
     else
       @account = current_user.account
     end
+    @bets = current_user.bets.order(created_at: 'desc')
   end
 
   def update
