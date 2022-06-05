@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
     else
       @account = current_user.account
     end
+    CalculateMoneyService.call(current_user)
     @bets = current_user.bets.order(created_at: 'desc')
   end
 
