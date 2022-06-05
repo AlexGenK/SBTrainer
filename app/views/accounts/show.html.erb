@@ -8,6 +8,34 @@
         <b>Account</b>
       </div>
       <div class="card-body">
+        <%= form_for [current_user, @account], html: {class: 'row align-items-center'} do |f| %>
+          <div class='col-auto'>
+            <%= label_tag :replenish, 'Account replenishment:',  class: 'form-label' %>
+          </div>
+          <div class='col-auto'>
+            <div class="input-group">
+              <div class="input-group-text">$</div>
+              <%= number_field_tag :replenish, 0, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-success">Replenish</button>
+          </div>
+        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Current state</th>
+              <th>Win money</th>
+              <th>Spend modey</th>
+            </tr>
+          </thead>
+          <tbody>
+              <th><%= @account.sum %>$</th>
+              <td><%= @account.win %>$</td>
+              <td><%= @account.spend %>$</td>
+          </tbody>
+        </table>
       </div>
     </div>
     <br/>

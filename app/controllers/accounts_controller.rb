@@ -7,4 +7,11 @@ class AccountsController < ApplicationController
       @account = current_user.account
     end
   end
+
+  def update
+    @account = current_user.account
+    @account.sum += params[:replenish].to_i
+    @account.save
+    redirect_to user_account_path(current_user, @account) 
+  end
 end
