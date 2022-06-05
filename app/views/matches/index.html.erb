@@ -18,6 +18,8 @@
           <th>Team 1</th>
           <th>Team 2</th>
           <th>Date</th>
+          <th>Score 1</th>
+          <th>Score 2</th>
           <% if user_signed_in? %>
             <th></th>
           <% end %>
@@ -29,6 +31,13 @@
             <td><%= mth.team1 %></td>
             <td><%= mth.team2 %></td>
             <td><%= mth.date %></td>
+            <% if mth.played? %>
+              <td><%= mth.score1 %></td>
+              <td><%= mth.score2 %></td>
+            <% else %>
+              <td>-</td>
+              <td>-</td>
+            <% end %>
             <% if user_signed_in? %>
               <td>
                 <% if mth.played? %>
