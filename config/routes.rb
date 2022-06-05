@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    resource :account
+  end
+
   root to: 'championships#index'
 end
