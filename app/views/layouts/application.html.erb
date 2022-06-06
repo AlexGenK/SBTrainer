@@ -31,6 +31,9 @@
                 <%= link_to 'Statistics', user_account_path(current_user), class: 'nav-link' %>
               </li>
             <% end %>
+            <li class="nav-item">
+              <%= link_to 'Contacts', contacts_path, class: 'nav-link' %>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
