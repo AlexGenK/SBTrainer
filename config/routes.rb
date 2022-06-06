@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resource :account
   end
 
+  get 'contacts', to: 'single_pages#contacts'
+  
   root to: 'championships#index'
 end
