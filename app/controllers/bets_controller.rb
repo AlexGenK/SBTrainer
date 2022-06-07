@@ -19,6 +19,8 @@ class BetsController < ApplicationController
     end
     @bet.user_id = current_user.id
     if @bet.save
+      current_user.account.sum -= @bet.sum
+      current_user.account.save
       redirect_to championship_matches_path(@championship)
     else
       flash[:alert] = 'Unable to create a bet'

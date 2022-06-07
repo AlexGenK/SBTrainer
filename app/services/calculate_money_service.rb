@@ -10,8 +10,7 @@ class CalculateMoneyService
           user.account.sum += all_sum
           user.account.win += all_sum
         else
-          user.account.sum -= all_sum
-          user.account.spend += all_sum
+          user.account.spend += bet.sum
         end
         bet.save
         user.account.save
